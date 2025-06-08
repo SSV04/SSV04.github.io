@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivshakti Vashist - AI & Cybersecurity Portfolio</title>
-    <meta name="description" content="Computer Science student at KIIT University specializing in AI, Cybersecurity, and Full-Stack Development. Creator of Botfolio AI CLI Assistant.">
-    <meta name="keywords" content="Shivshakti Vashist, Computer Science, AI, Cybersecurity, KIIT University, Botfolio, CLI Assistant, Student Developer">
+    <meta name="description" content="Computer Science student at KIIT University specializing in AI, Cybersecurity, and Full-Stack Development.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -37,10 +36,65 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .quick-link {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .quick-link:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Terminal Section */
+        .terminal-wrapper {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
         }
 
         .terminal-header {
@@ -78,44 +132,24 @@
             background: var(--bg-secondary);
             border-radius: 0 0 8px 8px;
             padding: 20px;
-            min-height: 500px;
+            min-height: 400px;
             border: 1px solid var(--border);
             position: relative;
-            overflow: hidden;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
-        .terminal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .welcome-text {
-            color: var(--text-primary);
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px var(--text-primary); }
-            to { text-shadow: 0 0 20px var(--text-primary), 0 0 30px var(--text-primary); }
+        .terminal-content {
+            opacity: 0;
+            animation: typewriter 2s ease-in-out 0.5s forwards;
         }
 
         .command-line {
             display: flex;
             align-items: center;
-            margin: 10px 0;
+            margin: 8px 0;
             opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
+            animation: slideIn 0.6s ease forwards;
         }
 
         .prompt {
@@ -126,87 +160,140 @@
 
         .command {
             color: var(--info);
-            font-weight: 400;
         }
 
         .output {
-            margin: 5px 0 15px 20px;
+            margin: 5px 0 10px 20px;
             color: var(--text-white);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .success { color: var(--text-primary); }
+        .error { color: var(--accent); }
+        .warning { color: var(--warning); }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
             opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
+            animation: fadeInUp 1s ease 0.6s forwards;
         }
 
-        .error {
-            color: var(--accent);
-        }
-
-        .success {
-            color: var(--text-primary);
-        }
-
-        .warning {
-            color: var(--warning);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .typing-cursor {
-            display: inline-block;
-            width: 2px;
-            height: 20px;
-            background: var(--text-primary);
-            animation: blink 1s infinite;
-            margin-left: 5px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .navigation-menu {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(26, 26, 26, 0.8);
-            border-radius: 8px;
+        .project-card {
+            background: var(--bg-secondary);
             border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--text-primary);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .project-title {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--info);
+            text-decoration: none;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border: 1px solid var(--info);
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--info);
+            color: var(--bg-primary);
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
 
         .nav-item {
             display: flex;
             align-items: center;
-            padding: 10px 0;
+            padding: 12px 15px;
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-white);
+            border: 1px solid transparent;
         }
 
         .nav-item:hover {
             background: rgba(0, 255, 136, 0.1);
-            transform: translateX(10px);
-            color: var(--text-primary);
+            border-color: var(--text-primary);
+            transform: translateX(5px);
         }
 
         .nav-icon {
-            margin-right: 15px;
-            font-size: 18px;
+            margin-right: 12px;
+            font-size: 1.2rem;
         }
 
+        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: var(--text-secondary);
+            padding: 30px 0;
             border-top: 1px solid var(--border);
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.2s forwards;
         }
 
         .social-links {
@@ -214,314 +301,422 @@
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
+            flex-wrap: wrap;
+            align-items: center; /* Add this line for vertical alignment */
         }
 
         .social-link {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 10px;
+            padding: 8px 12px;
             border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
         .social-link:hover {
             color: var(--text-primary);
+            border-color: var(--text-primary);
             background: rgba(0, 255, 136, 0.1);
-            transform: translateY(-2px);
         }
 
-        .loading-bar {
-            width: 100%;
-            height: 4px;
-            background: var(--border);
-            border-radius: 2px;
-            margin: 20px 0;
-            overflow: hidden;
+        /* LinkedIn Badge Popup */
+        .linkedin-hover-container {
+            position: relative;
+            display: flex; /* Change from inline-block to flex */
+            align-items: center; /* Vertically center the LinkedIn link */
+            vertical-align: middle;
         }
 
-        .loading-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--text-primary), var(--info));
-            width: 0%;
-            animation: loading 3s ease-in-out forwards;
+        .linkedin-badge-popup {
+            display: none;
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: #1a1a1a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 0 0 0;
+            width: 260px; /* Increased width for badge */
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+            text-align: center;
         }
 
-        @keyframes loading {
-            to { width: 100%; }
+        .linkedin-hover-container:hover .linkedin-badge-popup {
+            display: block;
         }
 
-        /* Mobile Responsiveness */
+        @media (max-width: 500px) {
+            .linkedin-badge-popup {
+                left: 0;
+                transform: none;
+                width: 100vw;
+                min-width: 200px;
+                border-radius: 0 0 8px 8px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes typewriter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Staggered animations */
+        .command-line:nth-child(1) { animation-delay: 0.1s; }
+        .command-line:nth-child(2) { animation-delay: 0.2s; }
+        .command-line:nth-child(3) { animation-delay: 0.3s; }
+        .command-line:nth-child(4) { animation-delay: 0.4s; }
+        .command-line:nth-child(5) { animation-delay: 0.5s; }
+        .command-line:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Scrollbar styling */
+        .terminal::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .terminal::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        .terminal::-webkit-scrollbar-thumb {
+            background: var(--text-primary);
+            border-radius: 3px;
+        }
+
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .quick-links {
+                gap: 10px;
+            }
+            
+            .quick-link {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
             
             .terminal {
                 padding: 15px;
             }
             
-            .welcome-text {
-                font-size: 20px;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
             
-            .command-line {
-                flex-wrap: wrap;
-            }
-            
-            .social-links {
-                flex-wrap: wrap;
-                gap: 10px;
+            .nav-grid {
+                grid-template-columns: 1fr;
             }
         }
-
-        /* Animation delays for staggered effect */
-        .command-line:nth-child(1) { animation-delay: 0.2s; }
-        .command-line:nth-child(2) { animation-delay: 0.4s; }
-        .command-line:nth-child(3) { animation-delay: 0.6s; }
-        .command-line:nth-child(4) { animation-delay: 0.8s; }
-        .command-line:nth-child(5) { animation-delay: 1.0s; }
-        .command-line:nth-child(6) { animation-delay: 1.2s; }
-        .command-line:nth-child(7) { animation-delay: 1.4s; }
-        .command-line:nth-child(8) { animation-delay: 1.6s; }
-
-        .output:nth-child(3) { animation-delay: 0.3s; }
-        .output:nth-child(5) { animation-delay: 0.5s; }
-        .output:nth-child(7) { animation-delay: 0.7s; }
-        .output:nth-child(9) { animation-delay: 0.9s; }
-        .output:nth-child(11) { animation-delay: 1.1s; }
-        .output:nth-child(13) { animation-delay: 1.3s; }
-        .output:nth-child(15) { animation-delay: 1.5s; }
-        .output:nth-child(17) { animation-delay: 1.7s; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="terminal-header">
-            <div class="window-controls">
-                <div class="control close"></div>
-                <div class="control minimize"></div>
-                <div class="control maximize"></div>
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Shivshakti Vashist</h1>
+            <p>Computer Science Student | AI Enthusiast | Cybersecurity Specialist</p>
+            
+            <div class="quick-links">
+                <a href="https://drive.google.com/file/d/17ewQ3aQ1anUof7gqxr6QyH3YIENjr6eG/view?usp=sharing" class="quick-link" target="_blank">📄 Resume</a>
+                <a href="https://www.linkedin.com/in/shivshakti-vashist-11042k23/details/certifications/" class="quick-link" target="_blank">🏆 Certifications</a>
+                <a href="https://github.com/SSV04" class="quick-link" target="_blank">💻 GitHub</a>
+                <a href="mailto:ssvashist1104@gmail.com" class="quick-link">📧 Contact</a>
             </div>
-            <div class="terminal-title">shivshakti@portfolio:~</div>
         </div>
-        
-        <div class="terminal">
-            <div class="welcome-text">Welcome to Shivshakti's Digital Space</div>
-            
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="command">whoami</span>
-            </div>
-            <div class="output">
-                Computer Science Student | AI Enthusiast | Cybersecurity Specialist
-            </div>
-            
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="command">ls -la ./skills</span>
-            </div>
-            <div class="output">
-                Programming: C • Java • JavaScript • HTML • CSS<br>
-                Specialties: AI • Cybersecurity • DSA • AutoCAD<br>
-                Soft Skills: Leadership • Content Writing • Project Management
-            </div>
-            
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="command">cat ./education.txt</span>
-            </div>
-            <div class="output success">
-                🎓 B.Tech CSE @ KIIT University (2022-2026)<br>
-                📚 Class 12th: 90.8% | Class 10th: 74%<br>
-                🏆 Multiple certifications from IBM, Google, SCRUMstudy
-            </div>
-            
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="command">./show-projects.sh</span>
-            </div>
-            <div class="output">
-                🤖 <strong>Botfolio - AI CLI Portfolio</strong><br>
-                   └─ Interactive command-line assistant for portfolio showcase<br>
-                   └─ Features: AI integration, colorful CLI, natural chat<br>
-                🔐 <strong>Cybersecurity Tools Suite</strong><br>
-                   └─ Caesar Cipher, Password Checker, Keylogger, Packet Analyzer
-            </div>
-            
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="command">git clone https://github.com/SSV04/Botfolio.git</span>
-            </div>
-            <div class="output">
-                <div class="loading-bar">
-                    <div class="loading-progress"></div>
+
+        <!-- Terminal Section -->
+        <div class="terminal-wrapper">
+            <div class="terminal-header">
+                <div class="window-controls">
+                    <div class="control close"></div>
+                    <div class="control minimize"></div>
+                    <div class="control maximize"></div>
                 </div>
-                <span class="success">Repository cloned successfully! ⭐</span><br>
-                <span class="info">Try my AI CLI Portfolio Assistant!</span>
+                <div class="terminal-title">shivshakti@portfolio:~</div>
             </div>
             
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="command">echo "Open to internships and collaborations"</span>
-            </div>
-            <div class="output success">
-                Open to internships and collaborations 🚀
-            </div>
-            
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="typing-cursor"></span>
+            <div class="terminal">
+                <div class="terminal-content" id="terminal-content"></div>
             </div>
         </div>
 
-        <div class="navigation-menu">
-            <div class="nav-item" onclick="window.open('https://github.com/SSV04/Botfolio', '_blank')">
-                <span class="nav-icon">🤖</span>
-                <span>Botfolio - AI CLI Assistant</span>
+        <!-- Projects Section -->
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">
+                    🤖 Botfolio - AI CLI Assistant
+                </div>
+                <div class="project-description">
+                    Interactive command-line portfolio assistant with AI integration, colorful CLI interface, and natural chat capabilities.
+                </div>
+                <a href="https://github.com/SSV04/Botfolio" class="project-link" target="_blank">View on GitHub →</a>
             </div>
-            <div class="nav-item" onclick="window.open('https://github.com/SSV04', '_blank')">
-                <span class="nav-icon">📁</span>
-                <span>View All Projects</span>
-            </div>
-            <div class="nav-item" onclick="window.open('#certifications', '_self')">
-                <span class="nav-icon">🏆</span>
-                <span>Certifications & Awards</span>
-            </div>
-            <div class="nav-item" onclick="window.open('mailto:ssvashist1104@gmail.com', '_blank')">
-                <span class="nav-icon">📧</span>
-                <span>Get In Touch</span>
-            </div>
-            <div class="nav-item" onclick="window.open('#experience', '_self')">
-                <span class="nav-icon">💼</span>
-                <span>Work Experience</span>
-            </div>
-            <div class="nav-item" onclick="downloadResume()">
-                <span class="nav-icon">📄</span>
-                <span>Download Resume</span>
+            
+            <div class="project-card">
+                <div class="project-title">
+                    🔐 Cybersecurity Tools Suite
+                </div>
+                <div class="project-description">
+                    Collection of security tools including Caesar Cipher, Password Checker, Keylogger, and Packet Analyzer.
+                </div>
+                <a href="https://github.com/SSV04" class="project-link" target="_blank">View Projects →</a>
             </div>
         </div>
 
+        <!-- Navigation Menu -->
+        <div class="nav-menu">
+            <div class="nav-grid">
+                <a href="https://github.com/SSV04" class="nav-item" target="_blank">
+                    <span class="nav-icon">📁</span>
+                    <span>All GitHub Projects</span>
+                </a>
+                
+                <a href="https://drive.google.com/file/d/17ewQ3aQ1anUof7gqxr6QyH3YIENjr6eG/view?usp=sharing" class="nav-item" target="_blank">
+                    <span class="nav-icon">📄</span>
+                    <span>Download Resume</span>
+                </a>
+                
+                <a href="mailto:ssvashist1104@gmail.com" class="nav-item">
+                    <span class="nav-icon">📧</span>
+                    <span>Get In Touch</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
         <div class="footer">
-            <p>&copy; 2025 Shivshakti Vashist. Computer Science Student @ KIIT University</p>
+            <p>&copy; 2026 Shivshakti Vashist • Computer Science Student @ KIIT University</p>
             <div class="social-links">
                 <a href="https://github.com/SSV04" class="social-link" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/shivshakti-vashist-11042k23" class="social-link" target="_blank">LinkedIn</a>
+                
+                <div class="linkedin-hover-container">
+                    <a href="https://www.linkedin.com/in/shivshakti-vashist-11042k23" class="social-link" target="_blank">LinkedIn</a>
+                    <div class="linkedin-badge-popup">
+                        <div class="badge-base LI-profile-badge"
+                            data-locale="en_US"
+                            data-size="medium"
+                            data-theme="dark"
+                            data-type="VERTICAL"
+                            data-vanity="shivshakti-vashist-11042k23"
+                            data-version="v1">
+                        </div>
+                    </div>
+                </div>
+                
                 <a href="mailto:ssvashist1104@gmail.com" class="social-link">Email</a>
-                <a href="tel:+919306205624" class="social-link">Call</a>
+                <a href="tel:+919306205624" class="social-link">Phone</a>
             </div>
         </div>
     </div>
 
     <script>
-        // Add some interactive terminal effects
-        document.addEventListener('DOMContentLoaded', function() {
-            // Simulate typing effect on the cursor
-            const cursor = document.querySelector('.typing-cursor');
-            let isVisible = true;
-            
-            setInterval(() => {
-                cursor.style.opacity = isVisible ? '0' : '1';
-                isVisible = !isVisible;
-            }, 500);
-
-            // Add click effects to navigation items
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    // Add ripple effect
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    ripple.style.width = ripple.style.height = size + 'px';
-                    ripple.style.left = x + 'px';
-                    ripple.style.top = y + 'px';
-                    ripple.style.position = 'absolute';
-                    ripple.style.background = 'rgba(0, 255, 136, 0.3)';
-                    ripple.style.borderRadius = '50%';
-                    ripple.style.transform = 'scale(0)';
-                    ripple.style.animation = 'ripple 0.6s linear';
-                    ripple.style.pointerEvents = 'none';
-                    
-                    this.style.position = 'relative';
-                    this.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
+        });
 
-            // Add resume download functionality
-            window.downloadResume = function() {
-                // Create a simple resume card modal
-                const modal = document.createElement('div');
-                modal.style.cssText = `
-                    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-                    background: rgba(0,0,0,0.8); display: flex; align-items: center;
-                    justify-content: center; z-index: 1000; padding: 20px;
+        // Add ripple effect to interactive elements
+        document.querySelectorAll('.nav-item, .project-card, .quick-link').forEach(element => {
+            element.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(0, 255, 136, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
                 `;
                 
-                const content = document.createElement('div');
-                content.style.cssText = `
-                    background: var(--bg-secondary); padding: 30px; border-radius: 10px;
-                    border: 1px solid var(--border); max-width: 500px; width: 100%;
-                    color: var(--text-white); font-family: 'JetBrains Mono', monospace;
-                `;
+                this.style.position = 'relative';
+                this.appendChild(ripple);
                 
-                content.innerHTML = `
-                    <h3 style="color: var(--text-primary); margin-bottom: 20px;">📄 Resume Summary</h3>
-                    <div style="line-height: 1.8;">
-                        <p><strong>Shivshakti Vashist</strong></p>
-                        <p>📍 Sonipat, India | 📧 ssvashist1104@gmail.com</p>
-                        <p>📱 +91 9306205624</p>
-                        <br>
-                        <p><strong>🎓 Education:</strong></p>
-                        <p>• B.Tech CSE @ KIIT University (2022-2026)</p>
-                        <p>• Class 12th: 90.8% (Sri Chaitanya)</p>
-                        <br>
-                        <p><strong>💼 Experience:</strong></p>
-                        <p>• Content Team Lead @ Youth Red Cross</p>
-                        <p>• Cybersecurity Intern @ Prodigy InfoTech</p>
-                        <p>• AI Mentorship @ Teachnook</p>
-                        <br>
-                        <p><strong>🏆 Certifications:</strong></p>
-                        <p>• IBM: Project Management, Web Dev</p>
-                        <p>• Google: Vertex AI Skill Badge</p>
-                        <p>• SCRUMstudy: Scrum Fundamentals</p>
-                    </div>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <button onclick="this.parentElement.parentElement.parentElement.remove()" 
-                                style="background: var(--text-primary); color: black; border: none; 
-                                       padding: 10px 20px; border-radius: 5px; cursor: pointer; 
-                                       font-family: 'JetBrains Mono', monospace;">
-                            Close
-                        </button>
-                    </div>
-                `;
-                
-                modal.appendChild(content);
-                document.body.appendChild(modal);
-                
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        modal.remove();
-                    }
-                });
-            };
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(2);
-                        opacity: 0;
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Terminal typing effect
+        const terminalLines = [
+            { type: 'command', text: 'cat ./about.txt' },
+            { type: 'output', text: '🎓 B.Tech CSE @ KIIT University (2022-2026)<br>💼 Cybersecurity Intern @ Prodigy InfoTech<br>🤖 AI Mentorship @ Teachnook<br>📝 Content Team Lead @ Youth Red Cross' },
+            { type: 'command', text: 'ls ./skills' },
+            { type: 'output success', text: 'Programming: C • Java • JavaScript • HTML • CSS<br>Specialties: AI • Cybersecurity • DSA • AutoCAD<br>Tools: Git • Linux • AutoCAD • Project Management' },
+            { type: 'command', text: 'echo "Ready for new opportunities!"' },
+            { type: 'output warning', text: 'Ready for new opportunities! 🚀' }
+        ];
+
+        const terminalContent = document.getElementById('terminal-content');
+
+        function typeLine(line, i, cb) {
+            let el;
+            if (line.type.startsWith('command')) {
+                el = document.createElement('div');
+                el.className = 'command-line';
+                el.innerHTML = `<span class="prompt">$</span> <span class="command"></span>`;
+                terminalContent.appendChild(el);
+                let j = 0;
+                function typeChar() {
+                    if (j <= line.text.length) {
+                        el.querySelector('.command').innerHTML = line.text.slice(0, j);
+                        j++;
+                        setTimeout(typeChar, 30);
+                    } else {
+                        cb();
                     }
                 }
-            `;
-            document.head.appendChild(style);
+                typeChar();
+            } else if (line.type.startsWith('output')) {
+                el = document.createElement('div');
+                el.className = 'output' + (line.type.split(' ')[1] ? ' ' + line.type.split(' ')[1] : '');
+                terminalContent.appendChild(el);
+                let j = 0;
+                function typeChar() {
+                    if (j <= line.text.length) {
+                        el.innerHTML = line.text.slice(0, j);
+                        j++;
+                        setTimeout(typeChar, 10);
+                    } else {
+                        cb();
+                    }
+                }
+                setTimeout(typeChar, 300);
+            }
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        }
+
+        function typeAllLines(i = 0) {
+            if (i < terminalLines.length) {
+                typeLine(terminalLines[i], i, () => typeAllLines(i + 1));
+            } else {
+                setTimeout(() => {
+                    terminalContent.innerHTML = '';
+                    typeAllLines(0);
+                }, 1200); // Wait 1.2s before restarting
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            terminalContent.innerHTML = '';
+            typeAllLines();
         });
+    </script>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
+    <!-- Add this script just before </body> to trigger the Konami code Easter egg with "SHIV" as the secret message -->
+    <script>
+const secretCode = ['s','h','i','v'];
+let secretIndex = 0;
+
+window.addEventListener('keydown', function(e) {
+    if (e.key.toLowerCase() === secretCode[secretIndex]) {
+        secretIndex++;
+        if (secretIndex === secretCode.length) {
+            showEasterEgg();
+            secretIndex = 0;
+        }
+    } else {
+        secretIndex = 0;
+    }
+});
+
+function showEasterEgg() {
+    // Show a modal with a random image from picsum.photos and confetti
+    const egg = document.createElement('div');
+    egg.innerHTML = `
+        <div style="
+            position:fixed;top:0;left:0;width:100vw;height:100vh;
+            background:rgba(10,10,10,0.95);z-index:9999;display:flex;
+            align-items:center;justify-content:center;flex-direction:column;
+        ">
+            <h1 style="color:#00ff88;font-size:2.5rem;margin-bottom:10px;letter-spacing:0.2em;">SHIV MODE ACTIVATED!</h1>
+            <img src="https://picsum.photos/200?random=${Math.floor(Math.random()*1000)}" alt="Random Meme" style="max-width:350px;width:90vw;border-radius:12px;box-shadow:0 4px 32px #0008;margin:20px 0;">
+            <button style="margin-top:20px;padding:10px 30px;font-size:1.1rem;border-radius:6px;border:none;background:#00ff88;color:#0a0a0a;cursor:pointer;" onclick="this.parentElement.parentElement.remove()">Close</button>
+        </div>
+    `;
+    document.body.appendChild(egg);
+
+    // Simple confetti effect
+    for(let i=0;i<80;i++){
+        const conf = document.createElement('div');
+        conf.style.position = 'fixed';
+        conf.style.left = Math.random()*100+'vw';
+        conf.style.top = '-30px';
+        conf.style.width = '10px';
+        conf.style.height = '10px';
+        conf.style.background = `hsl(${Math.random()*360},100%,60%)`;
+        conf.style.borderRadius = '50%';
+        conf.style.opacity = 0.8;
+        conf.style.zIndex = 10000;
+        conf.style.transition = 'top 2s cubic-bezier(.17,.67,.83,.67)';
+        document.body.appendChild(conf);
+        setTimeout(() => {
+            conf.style.top = '100vh';
+        }, 10);
+        setTimeout(() => conf.remove(), 2100);
+    }
+}
     </script>
 </body>
 </html>
